@@ -2,6 +2,7 @@
 #18540
 #Analisis y Diseño de Algoritmos
 
+
 def swap_element(my_list, index):
     my_list.insert(0, my_list.pop(index)) #0 porque es la primera pos
 
@@ -27,58 +28,58 @@ def move2front(strng, configuration):
 
 print("======  a)  =======\n")
 configuration = [0, 1, 2, 3, 4]
-request_sequence = [0, 1, 2, 3, 4,0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4]
-move2front(request_sequence, configuration)
+request_list = [0, 1, 2, 3, 4,0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4]
+move2front(request_list, configuration)
 
 print("======  b)  =======\n")
 configuration = [0, 1, 2, 3, 4]
-request_sequence = [4, 3, 2, 1, 0, 1, 2, 3, 4, 3, 2, 1, 0, 1, 2, 3, 4]
-move2front(request_sequence, configuration)
+request_list = [4, 3, 2, 1, 0, 1, 2, 3, 4, 3, 2, 1, 0, 1, 2, 3, 4]
+move2front(request_list, configuration)
 
 print("======  c)  =======\n")
-print("Respuesta: La secuencia son 20 ceros, y el costo total es 20.\n")
+print("R: La secuencia son 20 ceros, y el costo total es 20.\n")
 configuration = [0, 1, 2, 3, 4]
-request_sequence = [0] * 20
-move2front(request_sequence, configuration)
+request_list = [0] * 20
+move2front(request_list, configuration)
 
 print("======  d)  =======\n")
-print("Respuesta: La secuencia es [4,3,2,1,0,4,3,2,1,0,4,3,2,1,0,4,3,2,1,0], y el costo total es 100.\n")
+print("R: La secuencia es [4,3,2,1,0,4,3,2,1,0,4,3,2,1,0,4,3,2,1,0], y el costo total es 100.\n")
 configuration = [0, 1, 2, 3, 4]
-request_sequence = [4,3,2,1,0] * 4
-move2front(request_sequence, configuration)
+request_list = [4,3,2,1,0] * 4
+move2front(request_list, configuration)
 
 print("======  e)  =======\n")
 configuration = [0, 1, 2, 3, 4]
-request_sequence = [2] * 20
-move2front(request_sequence, configuration)
+request_list = [2] * 20
+move2front(request_list, configuration)
 print("¿Cuál es el costo total de acceso para una secuencia de 20 números 3's?")
-print("Respuesta: el costo es de 23\n")
+print("R: el costo es de 23\n")
 print("¿Cual sería la fórmula para calcular el costo de n solicitudes del mismo elemento si éste se encuentra inicialmente en la k-esima posición de la lista de configuración?\n")
-print("Respuesta: n + k - 1\n")
+print("R: n + k - 1\n")
 
 def improved_move2front(strng, configuration):
     sequence = []
     total_cost = 0
-    for j in range(len(strng)):
+    for char in range(len(strng)):
         unit_cost = 0
-        print("Solicitud: " + str(strng[j]))
+        print("Solicitud: " + str(strng[char]))
         print("Configuración previa a IMTF: " + str(configuration))
         for i in configuration:
-            if (configuration.index(strng[j]) == i):
-                ocurrences = []
-                if (j+i < len(strng)):
-                    for ocurrence in range(j+1, j+i+1):
-                        ocurrences.append(strng[ocurrence])
-                elif (j+i >= len(strng)):
-                    for ocurrence in range(j+1, len(strng)):
-                        ocurrences.append(strng[ocurrence])
+            if (configuration.index(strng[char]) == i):
+                new_list = []
+                if (char+i < len(strng)):
+                    for ocurrence in range(char+1, char+i+1):
+                        new_list.append(strng[ocurrence])
+                elif (char+i >= len(strng)):
+                    for ocurrence in range(char+1, len(strng)):
+                        new_list.append(strng[ocurrence])
 
-                print("Revisión :" + str(ocurrences))
+                print("Revisión :" + str(new_list))
 
-                if (strng[j] in ocurrences):
+                if (strng[char] in new_list):
                     print("Se mueve al frente")
                     unit_cost = i + 1
-                    swap_element(configuration, configuration.index(strng[j]))
+                    swap_element(configuration, configuration.index(strng[char]))
                 else:
                     unit_cost = i + 1
                     print("No se mueve al frente")
@@ -94,18 +95,18 @@ def improved_move2front(strng, configuration):
 print("======  f)  =======\n")
 print("El mejor de los casos, usando IMTF")
 configuration = [0, 1, 2, 3, 4]
-request_sequence = [0] * 20
-improved_move2front(request_sequence, configuration)
+request_list = [0] * 20
+improved_move2front(request_list, configuration)
 
 print("El peor de los casos, usando IMTF")
 configuration = [0, 1, 2, 3, 4]
-request_sequence = [4,3,2,1,0] * 4
-improved_move2front(request_sequence, configuration)
+request_list = [4,3,2,1,0] * 4
+improved_move2front(request_list, configuration)
 
 print("======  g)  =======\n")
 print("¿Cuál es la diferencia entre un algoritmo online y uno offline?\n")
 print("""
-Respuesta: 
+R: 
 Un algoritmo online es aquel que puede realizar procesamiento de su entrada parte por parte en forma serializada, es deicr,
 en el orden en que la entrada se alimenta al algoritmo, sin necesidad de tener toda la entrada disponible desde el principio. Por otro lado, 
 un algoritmo offline se le es provisto toda la información del problema desde el principio y se le requiere que devuelva una 
@@ -117,7 +118,7 @@ print("""
 (considere el efecto de diferentes secuencias de solicitudes)?\n
 """)
 print("""
-Respuesta: 
+R: 
 Para uno no, para el otro sí. En el caso del MTF no cambaría su desempeño ya que el algoritmo en general solo recibe una solicitud 
 a la vez y realiza el movimiento hacia enfrente. En cambio, para el IMTF sí cambiaría el desempeño Y el comportamiento, y esto se debe a que se es necesario acceder a la lista
 de solicitudes y hacer el look ahead, y finalmente determinar si el numero se mueve al frete o no.
@@ -130,7 +131,7 @@ sea online y que sirva para atender una secuencia de solicitudes de accesos.\n
 """)
 
 print("""
-Respuesta:
+R:
 El insertion sort.
 Este algoritmo de ordenamiento realiza iteraciones, tomando solo una entrada por repetición, y así va construyendo al lista final ordenada.
 Por cada iteración, este algoritmo quita un elemento, encuentra la ubicación donde pertenece en la lista ordenada, y lo inserta en esea posición. 
@@ -141,3 +142,4 @@ los mueve hasta la posición en donde los elementos no se encuentran ordenados.
 
 #Referencias
 # Karp, Richard M. (1992). "On-line algorithms versus off-line algorithms: How much is it worth to know the future?" (PDF). IFIP Congress (1). 12: 416–429.
+# https://rosettacode.org/wiki/Move-to-front_algorithm
