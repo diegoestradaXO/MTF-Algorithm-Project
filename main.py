@@ -3,7 +3,7 @@
 #Analisis y Diseño de Algoritmos
 
 def swap_element(my_list, index):
-    my_list.insert(0, my_list.pop(index))
+    my_list.insert(0, my_list.pop(index)) #0 porque es la primera pos
 
 def move2front(strng, configuration):
     sequence = []
@@ -131,7 +131,11 @@ sea online y que sirva para atender una secuencia de solicitudes de accesos.\n
 
 print("""
 Respuesta:
-
+El insertion sort.
+Este algoritmo de ordenamiento realiza iteraciones, tomando solo una entrada por repetición, y así va construyendo al lista final ordenada.
+Por cada iteración, este algoritmo quita un elemento, encuentra la ubicación donde pertenece en la lista ordenada, y lo inserta en esea posición. 
+Repite todo este proceso hasta que todos los elementos del arreglo estén ordenados. Si bien este algoritmo no mueve los elementos hasta el frente del arreglo, 
+los mueve hasta la posición en donde los elementos no se encuentran ordenados.
 
 \n""")
 
